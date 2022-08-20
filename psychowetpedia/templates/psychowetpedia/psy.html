@@ -1,0 +1,22 @@
+{% extends 'main.html' %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Psy</title>
+</head>
+<body>
+{% block content %}
+<h1>Psy</h1>
+<p>Wybierz interesujące Cię zagadnienie:</p>
+<ul>
+
+    {% for zaburzenia_psy, leczenie_psy in results %}
+
+    <li><a href="{% url 'leczenie_zaburzen_psy' leczenie_psy.id %}">{{ zaburzenia_psy }}</a></li>
+
+    {% endfor %}
+</ul>
+{% endblock content %}
+</body>
+</html>
