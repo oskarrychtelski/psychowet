@@ -1,30 +1,54 @@
 from django.shortcuts import render
 
-from .models import Leczenie, Leki
+from .models import Leczenie, Leki, Zaburzenia
 
-def psycholator(request):
-    return render(request, 'psycholator/psycholator.html')
+
+def home(request):
+    return render(request, 'psychowetpedia/home.html')
+
 
 def psy(request):
-    zaburzenia_psy = Leczenie.objects.values_list('zaburzenie', flat=True).exclude(dawka_pies=None).distinct().order_by('zaburzenie')
-    leczenie_psy = Leczenie.objects.exclude(dawka_pies=None)
-    results = zip(zaburzenia_psy, leczenie_psy)
-    context = {'results': results}
-    return render(request, 'psycholator/psy.html', context)
+    zaburzenia_psy = Zaburzenia.objects.exclude(spec_gat='kot').order_by('nazwa')
+    context = {'zaburzenia_psy': zaburzenia_psy}
+    return render(request, 'psychowetpedia/psy.html', context)
+
 
 def koty(request):
-    zaburzenia_koty = Leczenie.objects.values_list('zaburzenie', flat=True).exclude(dawka_kot=None).distinct().order_by('zaburzenie')
+    zaburzenia_koty = Zaburzenia.objects.exclude(spec_gat='pies').order_by('nazwa')
+    context = {'zaburzenia_koty': zaburzenia_koty}
+    return render(request, 'psychowetpedia/koty.html', context)
+
+
+def leczenie_zaburzen_psy(request, uuid):
+    zaburzenie_strona = Zaburzenia.objects.get(uuid=uuid)
+    leczenie_psy = Leczenie.objects.exclude(dawka_kot=None)
+    context = {'zaburzenie_strona': zaburzenie_strona, 'leczenie_psy': leczenie_psy}
+
+    return render(request, 'psychowetpedia/leczenie_zaburzen_psy.html', context)
+
+
+def leczenie_zaburzen_koty(request, uuid):
+    zaburzenie_strona = Zaburzenia.objects.get(uuid=uuid)
     leczenie_koty = Leczenie.objects.exclude(dawka_kot=None)
-    results = zip(zaburzenia_koty, leczenie_koty)
-    context = {'results': results}
-    return render(request, 'psycholator/koty.html', context)
+    context = {'zaburzenie_strona': zaburzenie_strona, 'leczenie_koty': leczenie_koty}
 
-def leczenie_zaburzen_psy(request, pk):
-    leczenie_strona = Leczenie.objects.get(id=pk)
-    return render(request, 'psycholator/leczenie_zaburzen.html', {'leczenie_strona': leczenie_strona})
+    return render(request, 'psychowetpedia/leczenie_zaburzen_koty.html', context)
 
-def leczenie_zaburzen_koty(request, pk):
-    leczenie_strona = Leczenie.objects.get(id=pk)
-    return render(request, 'psycholator/leczenie_zaburzen.html', {'leczenie_strona': leczenie_strona})
+
+def leki(request):
+    leki_wszystkie = Leki.objects.all().order_by('nazwa')
+    context = {'leki_wszystkie': leki_wszystkie}
+
+    return render(request, 'psychowetpedia/leki.html', context)
+
+
+def lek(request, uuid):
+    lek_strona = Leki.objects.get(uuid=uuid)
+    leki_wszystkie = Leki.objects.all().order_by('nazwa')
+    context = {'leki_wszystkie': leki_wszystkie, 'lek_strona': lek_strona}
+
+    return render(request, 'psychowetpedia/lek.html', context)
+
+
 
 # Create your views here.

@@ -1,0 +1,24 @@
+{% extends 'main.html' %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+{% block content %}
+<h1>{{ zaburzenie_strona.nazwa }}</h1>
+<ul>
+
+    {% for leczenie in leczenie_koty %}
+        {% if zaburzenie_strona == leczenie.zaburzenie %}
+            {{ leczenie.lek }}
+            <li>{{ leczenie.dawka_kot }}</li>
+            <li>{{ leczenie.opis }}</li>
+
+        {% endif %}
+    {% endfor %}
+</ul>
+{% endblock content %}
+</body>
+</html>
