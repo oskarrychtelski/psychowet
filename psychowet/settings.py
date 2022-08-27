@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'psychowetpedia.apps.PsychowetpediaConfig',
+    'users.apps.UsersConfig',
 ]
 
 MIDDLEWARE = [

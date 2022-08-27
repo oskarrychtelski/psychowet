@@ -10,9 +10,9 @@
 <h1>Psy</h1>
 <p>Wybierz interesujące Cię zagadnienie:</p>
 <ul>
-    {% for zaburzenie in zaburzenia_psy %}
+    {% for disorder in disorders_dogs %}
 
-    <li><a href="{% url 'leczenie_zaburzen_psy' zaburzenie.uuid %}">{{ zaburzenie }}</a></li>
+    <li><a href="{% url 'treatment_dogs' disorder.uuid %}">{{ disorder }}</a></li>
 
     {% endfor %}
 </ul>

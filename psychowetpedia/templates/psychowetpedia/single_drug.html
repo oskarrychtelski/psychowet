@@ -8,15 +8,15 @@
 </head>
 <body>
 {% block content %}
-    {% for lek in leki_wszystkie %}
-        {% if lek_strona.nazwa == lek.nazwa %}
-            <h1>{{ lek.nazwa }}</h1>
+    {% for drug in all_drugs %}
+        {% if drug_page.nazwa == drug.nazwa %}
+            <h1>{{ drug.nazwa }}</h1>
             <p>Opis</p>
-                <li>{{ lek.opis }}</li>
+                <li>{{ drug.opis }}</li>
             <p>Mechanizm działania</p>
-                <li>{{ lek.mechanizm }}</li>
+                <li>{{ drug.mechanizm }}</li>
             <p>Przeciwwskazania</p>
-                <li>{{ lek.przeciwwskazania }}</li>
+                <li>{{ drug.przeciwwskazania }}</li>
         {% endif %}
     {% endfor %}
 {% endblock content %}

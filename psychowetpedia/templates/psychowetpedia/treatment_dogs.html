@@ -1,0 +1,24 @@
+{% extends 'main.html' %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+{% block content %}
+<h1>{{ disorder_page.nazwa }}</h1>
+<ul>
+
+    {% for treatment in treatments_dogs %}
+        {% if disorder_page == treatment.zaburzenie %}
+            {{ treatment.lek }}
+            <li>{{ treatment.dawka_pies }}</li>
+            <li>{{ treatment.opis }}</li>
+
+        {% endif %}
+    {% endfor %}
+</ul>
+{% endblock content %}
+</body>
+</html>

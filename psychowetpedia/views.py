@@ -7,47 +7,47 @@ def home(request):
     return render(request, 'psychowetpedia/home.html')
 
 
-def psy(request):
-    zaburzenia_psy = Zaburzenia.objects.exclude(spec_gat='kot').order_by('nazwa')
-    context = {'zaburzenia_psy': zaburzenia_psy}
-    return render(request, 'psychowetpedia/psy.html', context)
+def dogs(request):
+    disorders_dogs = Zaburzenia.objects.exclude(spec_gat='kot').order_by('nazwa')
+    context = {'disorders_dogs': disorders_dogs}
+    return render(request, 'psychowetpedia/dogs.html', context)
 
 
-def koty(request):
-    zaburzenia_koty = Zaburzenia.objects.exclude(spec_gat='pies').order_by('nazwa')
-    context = {'zaburzenia_koty': zaburzenia_koty}
-    return render(request, 'psychowetpedia/koty.html', context)
+def cats(request):
+    disorders_cats = Zaburzenia.objects.exclude(spec_gat='pies').order_by('nazwa')
+    context = {'disorders_cats': disorders_cats}
+    return render(request, 'psychowetpedia/cats.html', context)
 
 
-def leczenie_zaburzen_psy(request, uuid):
-    zaburzenie_strona = Zaburzenia.objects.get(uuid=uuid)
-    leczenie_psy = Leczenie.objects.exclude(dawka_kot=None)
-    context = {'zaburzenie_strona': zaburzenie_strona, 'leczenie_psy': leczenie_psy}
+def treatment_dogs(request, uuid):
+    disorder_page = Zaburzenia.objects.get(uuid=uuid)
+    treatments_dogs = Leczenie.objects.exclude(dawka_kot=None)
+    context = {'disorder_page': disorder_page, 'treatments_dogs': treatments_dogs}
 
-    return render(request, 'psychowetpedia/leczenie_zaburzen_psy.html', context)
-
-
-def leczenie_zaburzen_koty(request, uuid):
-    zaburzenie_strona = Zaburzenia.objects.get(uuid=uuid)
-    leczenie_koty = Leczenie.objects.exclude(dawka_kot=None)
-    context = {'zaburzenie_strona': zaburzenie_strona, 'leczenie_koty': leczenie_koty}
-
-    return render(request, 'psychowetpedia/leczenie_zaburzen_koty.html', context)
+    return render(request, 'psychowetpedia/treatment_dogs.html', context)
 
 
-def leki(request):
-    leki_wszystkie = Leki.objects.all().order_by('nazwa')
-    context = {'leki_wszystkie': leki_wszystkie}
+def treatment_cats(request, uuid):
+    disorder_page = Zaburzenia.objects.get(uuid=uuid)
+    treatments_cats = Leczenie.objects.exclude(dawka_kot=None)
+    context = {'disorder_page': disorder_page, 'treatments_cats': treatments_cats}
 
-    return render(request, 'psychowetpedia/leki.html', context)
+    return render(request, 'psychowetpedia/treatment_cats.html', context)
 
 
-def lek(request, uuid):
-    lek_strona = Leki.objects.get(uuid=uuid)
-    leki_wszystkie = Leki.objects.all().order_by('nazwa')
-    context = {'leki_wszystkie': leki_wszystkie, 'lek_strona': lek_strona}
+def drug_index(request):
+    all_drugs = Leki.objects.all().order_by('nazwa')
+    context = {'all_drugs': all_drugs}
 
-    return render(request, 'psychowetpedia/lek.html', context)
+    return render(request, 'psychowetpedia/drug_index.html', context)
+
+
+def single_drug(request, uuid):
+    drug_page = Leki.objects.get(uuid=uuid)
+    all_drugs = Leki.objects.all().order_by('nazwa')
+    context = {'all_drugs': all_drugs, 'drug_page': drug_page}
+
+    return render(request, 'psychowetpedia/single_drug.html', context)
 
 
 

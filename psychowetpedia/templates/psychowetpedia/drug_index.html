@@ -8,9 +8,9 @@
 </head>
 <body>
 {% block content %}
-    {% for lek in leki_wszystkie %}
+    {% for drug in all_drugs %}
 
-    <li><a href="{% url 'lek' lek.uuid %}">{{ lek.nazwa }}</a></li>
+    <li><a href="{% url 'single_drug' drug.uuid %}">{{ drug.nazwa }}</a></li>
 
     {% endfor %}
 {% endblock content %}

@@ -10,9 +10,9 @@
 <h1>Koty</h1>
 <p>Wybierz interesujące Cię zagadnienie:</p>
 <ul>
-    {% for zaburzenie in zaburzenia_koty %}
+    {% for disorder in disorders_cats %}
 
-    <li><a href="{% url 'leczenie_zaburzen_koty' zaburzenie.uuid %}">{{ zaburzenie }}</a></li>
+    <li><a href="{% url 'treatment_cats' disorder.uuid %}">{{ disorder }}</a></li>
 
     {% endfor %}
 </ul>
