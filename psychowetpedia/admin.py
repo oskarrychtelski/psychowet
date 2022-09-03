@@ -4,4 +4,4 @@ from .models import Zaburzenia, Leki, Leczenie
 admin.site.register(Zaburzenia)
 admin.site.register(Leki)
 admin.site.register(Leczenie)
-# Register your models here.
+

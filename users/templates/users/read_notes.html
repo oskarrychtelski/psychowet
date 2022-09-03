@@ -1,0 +1,43 @@
+{% extends 'main.html' %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Psychowet</title>
+</head>
+<body>
+{% block content %}
+
+{% if author_notes == None %}
+    <h1>Nie masz na razie żadnych notatek.</h1>
+    <a href="{% url 'createNotes'%}">
+        <button>Stwórz notatkę</button>
+    </a>
+{% else %}
+<a href="{% url 'createNotes'%}">
+    <button>Stwórz notatkę</button>
+</a>
+{% for note in author_notes %}
+
+<table>
+    <tr>
+        <th>Imię Zwierzęcia</th>
+        <th>Zaburzenie</th>
+        <th>Lek</th>
+        <th>Opis</th>
+        <tr>
+            <td>{{note.imie_zwierzecia}}</td>
+            <td>{{note.zaburzenie}}</td>
+            <td>{{note.lek}}</td>
+            <td>{{note.opis}}</td>
+        </tr>
+    </tr>
+</table>
+
+{% endfor %}
+{% endif %}
+
+{% endblock content %}
+</body>
+</html>

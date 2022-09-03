@@ -7,12 +7,18 @@
     <title>Psychowet</title>
 </head>
 <body>
+
 {% block content %}
-    {% for drug in all_drugs %}
 
-    <li><a href="{% url 'single_drug' drug.uuid %}">{{ drug.nazwa }}</a></li>
+<h1>Zapisz notatkę z leczeniem</h1>
 
-    {% endfor %}
+<form action="" method="POST">
+    {% csrf_token %}
+    {{form.as_p}}
+    <input type="submit">
+</form>
+
 {% endblock content %}
+
 </body>
 </html>
