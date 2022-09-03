@@ -5,4 +5,4 @@ from .models import Notatki
 class NotesForm(ModelForm):
     class Meta:
         model = Notatki
-        fields = '__all__'
+        fields = ['imie_zwierzecia', 'zaburzenie', 'lek', 'opis']

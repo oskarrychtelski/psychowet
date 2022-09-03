@@ -53,7 +53,9 @@ def createNotes(request):
     if request.method == 'POST':
         form = NotesForm(request.POST)
         if form.is_valid():
-            form.save()
+            instance = form.save(commit=False)
+            instance.autor = request.user
+            instance.save()
             return redirect('notes')
 
     context = {'form': form}
@@ -62,7 +64,7 @@ def createNotes(request):
 
 @login_required(login_url='login')
 def updateNotes(request, uuid):
-    note = Notatki.objects.get(id=uuid)
+    note = Notatki.objects.get(uuid=uuid)
     form = NotesForm(instance=note)
 
     if request.method == 'POST':
@@ -73,3 +75,11 @@ def updateNotes(request, uuid):
 
     context = {'form': form}
     return render(request, 'users/note_form.html', context)
+
+def deleteNotes(request, uuid):
+    note = Notatki.objects.get(uuid=uuid)
+    if request.method == 'POST':
+        note.delete()
+        return redirect('notes')
+    context = {'object': note}
+    return render(request, 'users/delete_template.html', context)

@@ -9,4 +9,7 @@ class Notatki(models.Model):
     lek = models.ForeignKey('psychowetpedia.Leki', on_delete=models.PROTECT)
     opis = models.TextField(null=True, blank=True)
     autor = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, null=True, blank=True)
-    # uuid = models.UUIDField(default=uuid.uuid4, editable=False, unique=True)
+    uuid = models.UUIDField(default=uuid.uuid4, unique=True, editable=False)
+
+    def __str__(self):
+        return '{}, {}, {}'.format(self.imie_zwierzecia, self.zaburzenie, self.lek)

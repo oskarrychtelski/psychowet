@@ -19,22 +19,24 @@
     <button>Stwórz notatkę</button>
 </a>
 {% for note in author_notes %}
-
 <table>
     <tr>
         <th>Imię Zwierzęcia</th>
         <th>Zaburzenie</th>
         <th>Lek</th>
         <th>Opis</th>
+        <th></th>
+        <th></th>
+        </tr>
         <tr>
             <td>{{note.imie_zwierzecia}}</td>
             <td>{{note.zaburzenie}}</td>
             <td>{{note.lek}}</td>
             <td>{{note.opis}}</td>
+            <td><a href="{% url 'updateNotes' note.uuid %}">Edytuj</a></td>
+            <td><a href="{% url 'deleteNotes' note.uuid %}">Usuń</a></td>
         </tr>
-    </tr>
 </table>
-
 {% endfor %}
 {% endif %}
 
