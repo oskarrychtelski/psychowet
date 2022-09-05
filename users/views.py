@@ -1,5 +1,7 @@
 from django.shortcuts import render, redirect
+from django.contrib import messages
 from django.contrib.auth import login, authenticate, logout
+from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from .models import Notatki
@@ -7,6 +9,7 @@ from .forms import NotesForm
 
 
 def loginUser(request):
+    page = 'login'
 
     if request.user.is_authenticated:
         return redirect('home')
@@ -18,7 +21,7 @@ def loginUser(request):
         try:
             user = User.objects.get(username=username)
         except:
-            print('Podany użytkownik nie istnieje.')
+            messages.error(request, 'Podany użytkownik nie istnieje.')
 
         user = authenticate(request, username=username, password=password)
 
@@ -26,13 +29,38 @@ def loginUser(request):
             login(request, user)
             return redirect('home')
         else:
-            print('Nazwa użytkownika lub/i hasło są niepoprawne.')
-    return render(request, 'users/register_login.html')
+            messages.error(request, 'Nazwa użytkownika lub/i hasło są niepoprawne.')
+
+    context = {'page': page}
+    return render(request, 'users/register_login.html', context)
 
 
 def logoutUser(request):
     logout(request)
     return redirect('login')
+
+
+def registerUser(request):
+    page = 'register'
+    form = UserCreationForm()
+
+    if request.method == 'POST':
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            user = form.save(commit=False)
+            user.username = user.username.lower()
+            user.save()
+
+            messages.success(request, 'Konto zostało stworzone!')
+
+            login(request, user)
+            return redirect('home')
+
+        else:
+            messages.success(request, 'Nastąpił błąd podczas rejestracji!')
+
+    context = {'page': page, 'form': form}
+    return render(request, 'users/register_login.html', context)
 
 
 @login_required(login_url='login')
@@ -75,6 +103,7 @@ def updateNotes(request, uuid):
 
     context = {'form': form}
     return render(request, 'users/note_form.html', context)
+
 
 def deleteNotes(request, uuid):
     note = Notatki.objects.get(uuid=uuid)
