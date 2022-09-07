@@ -9,5 +9,7 @@ urlpatterns = [
     path('notatki/', views.notes, name='notes'),
     path('stworz-notatke/', views.createNotes, name='createNotes'),
     path('edytuj-notatke/<str:uuid>', views.updateNotes, name='updateNotes'),
-    path('usun-notatke/<str:uuid>', views.deleteNotes, name='deleteNotes')
+    path('usun-notatke/<str:uuid>', views.deleteNotes, name='deleteNotes'),
+
+    path('kontakt/', views.contact, name='contact')
 ]

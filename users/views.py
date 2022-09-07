@@ -4,8 +4,10 @@ from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
+from django.core.mail import send_mail
+from django.template.loader import render_to_string
 from .models import Notatki
-from .forms import NotesForm
+from .forms import NotesForm, ContactForm
 
 
 def loginUser(request):
@@ -112,3 +114,28 @@ def deleteNotes(request, uuid):
         return redirect('notes')
     context = {'object': note}
     return render(request, 'users/delete_template.html', context)
+
+
+def contact(request):
+    if request.method == 'POST':
+        form = ContactForm(request.POST)
+
+        if form.is_valid():
+            name = form.cleaned_data['name']
+            email = form.cleaned_data['email']
+            content = form.cleaned_data['content']
+
+            messages.success(request, 'Mail został wysłany!')
+
+            html = render_to_string('users/contact_form.html', {
+                                    'name': name,
+                                    'email': email,
+                                    'content': content
+            })
+
+            send_mail('Topic', 'Message', 'noreply@psychowet.com', ['oskar.rychtelski@gmail.com'], html_message=html)
+    else:
+        form = ContactForm()
+
+    context = {'form': form}
+    return render(request, 'users/contact.html', context)

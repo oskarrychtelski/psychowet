@@ -1,13 +1,19 @@
-from django.forms import ModelForm
+from django import forms
 # from django.contrib.auth.forms import UserCreationForm
 # from django.contrib.auth.models import User
 from .models import Notatki
 
 
-class NotesForm(ModelForm):
+class NotesForm(forms.ModelForm):
     class Meta:
         model = Notatki
         fields = ['imie_zwierzecia', 'zaburzenie', 'lek', 'opis']
+
+
+class ContactForm(forms.Form):
+    imie = forms.CharField(max_length=200)
+    email = forms.EmailField()
+    tekst = forms.CharField(widget=forms.Textarea)
 
 
 # class CustomUserCreationForm(UserCreationForm):
