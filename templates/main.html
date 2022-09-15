@@ -1,24 +1,28 @@
 <!DOCTYPE html>
-<html lang="en">
+{% load static %}
+<html lang="pl">
 <head>
-    <meta charset="UTF-8">
-    <title>Psychowet</title>
+  <meta charset="UTF-8">
+  <title>Psychowet</title>
+
+  <link rel="stylesheet" href="{% static 'styles/general.css' %}">
+  <link rel="stylesheet" href="{% static 'styles/main.css' %}">
 </head>
 <body>
-    {% include 'navbar.html' %}
+{% include 'navbar.html' %}
 
-    {% if messages %}
-    <ul class="messages">
-        {% for message in messages %}
-        <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
-        {% endfor %}
-    </ul>
-    {% endif %}
+{% if messages %}
+<ul class="messages">
+  {% for message in messages %}
+  <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+  {% endfor %}
+</ul>
+{% endif %}
 
 
-    {% block content %}
+{% block content %}
 
-    {% endblock content %}
+{% endblock content %}
 
 </body>
 </html>

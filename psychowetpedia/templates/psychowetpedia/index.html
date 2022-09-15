@@ -1,0 +1,37 @@
+{% extends 'main.html' %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <title>Psychowet</title>
+</head>
+<body>
+{% block content %}
+<div class="index-button-box">
+  <a href="leczenie/">
+    <button class="index-button">
+      <img src="{% static 'images/treatment-icon.png' %}">
+      <span>Leczenie</span>
+    </button>
+  </a>
+  <a href="leki/">
+    <button class="index-button">
+      <img src="{% static 'images/drug-icon.png' %}">
+      <span>Baza leków</span>
+    </button>
+  </a>
+
+  {% if request.user.is_authenticated %}
+  <a href="{% url 'notes' %}">
+    <button class="index-button">
+      <img src="{% static 'images/notes-icon.png' %}">
+      <span>Notatki</span>
+    </button>
+  </a>
+  {% endif %}
+</div>
+
+{% endblock content %}
+</body>
+</html>

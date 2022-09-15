@@ -14,7 +14,7 @@ def loginUser(request):
     page = 'login'
 
     if request.user.is_authenticated:
-        return redirect('home')
+        return redirect('index')
 
     if request.method == 'POST':
         username = request.POST['username']
@@ -29,7 +29,7 @@ def loginUser(request):
 
         if user is not None:
             login(request, user)
-            return redirect('home')
+            return redirect('index')
         else:
             messages.error(request, 'Nazwa użytkownika lub/i hasło są niepoprawne.')
 
@@ -56,7 +56,7 @@ def registerUser(request):
             messages.success(request, 'Konto zostało stworzone!')
 
             login(request, user)
-            return redirect('home')
+            return redirect('index')
 
         else:
             messages.success(request, 'Nastąpił błąd podczas rejestracji!')

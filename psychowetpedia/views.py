@@ -3,8 +3,12 @@ from django.shortcuts import render
 from .models import Leczenie, Leki, Zaburzenia
 
 
-def home(request):
-    return render(request, 'psychowetpedia/home.html')
+def index(request):
+    return render(request, 'psychowetpedia/index.html')
+
+
+def treatment(request):
+    return render(request, 'psychowetpedia/treatment.html')
 
 
 def dogs(request):

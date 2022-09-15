@@ -1,41 +1,42 @@
 {% extends 'main.html' %}
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pl">
 <head>
-    <meta charset="UTF-8">
-    <title>Psychowet</title>
+  <meta charset="UTF-8">
+  <title>Psychowet</title>
 </head>
 <body>
 {% block content %}
 
 {% if author_notes == None %}
-    <h1>Nie masz na razie żadnych notatek.</h1>
-    <a href="{% url 'createNotes'%}">
-        <button>Stwórz notatkę</button>
-    </a>
+  <h1>Nie masz na razie żadnych notatek.</h1>
+  <a href="{% url 'createNotes'%}">
+    <button>Stwórz notatkę</button>
+  </a>
+
 {% else %}
 <a href="{% url 'createNotes'%}">
-    <button>Stwórz notatkę</button>
+  <button>Stwórz notatkę</button>
 </a>
 {% for note in author_notes %}
 <table>
-    <tr>
-        <th>Imię Zwierzęcia</th>
-        <th>Zaburzenie</th>
-        <th>Lek</th>
-        <th>Opis</th>
-        <th></th>
-        <th></th>
-        </tr>
-        <tr>
-            <td>{{note.imie_zwierzecia}}</td>
-            <td>{{note.zaburzenie}}</td>
-            <td>{{note.lek}}</td>
-            <td>{{note.opis}}</td>
-            <td><a href="{% url 'updateNotes' note.uuid %}">Edytuj</a></td>
-            <td><a href="{% url 'deleteNotes' note.uuid %}">Usuń</a></td>
-        </tr>
+  <tr>
+    <th>Imię Zwierzęcia</th>
+    <th>Zaburzenie</th>
+    <th>Lek</th>
+    <th>Opis</th>
+    <th></th>
+    <th></th>
+    </tr>
+  <tr>
+    <td>{{note.imie_zwierzecia}}</td>
+    <td>{{note.zaburzenie}}</td>
+    <td>{{note.lek}}</td>
+    <td>{{note.opis}}</td>
+    <td><a href="{% url 'updateNotes' note.uuid %}">Edytuj</a></td>
+    <td><a href="{% url 'deleteNotes' note.uuid %}">Usuń</a></td>
+  </tr>
 </table>
 {% endfor %}
 {% endif %}

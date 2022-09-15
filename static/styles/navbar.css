@@ -1,0 +1,49 @@
+.navbar {
+  height: 70px;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+
+  background-color: white;
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+  border-bottom-color: grey;
+  box-shadow: 0 4px 6px -6px #222;
+}
+
+.logo{
+height: 40px;
+}
+
+.left-section{
+  width: 200px;
+  display: flex;
+  align-items: center;
+  margin-left: 50px;
+}
+
+.right-section{
+  width: 250px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-right: 50px;
+}
+
+.navbar-button img{
+  height: 35px;
+  vertical-align: middle;
+}
+
+.navbar-button{
+  border-radius: 8px;
+  border-color: grey;
+  border-style: solid;
+  box-shadow: 0 4px 6px -6px #222;
+}

@@ -1,24 +1,29 @@
 {% extends 'main.html' %}
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pl">
 <head>
-    <meta charset="UTF-8">
-    <title>Psychowet</title>
+  <meta charset="UTF-8">
+  <title>Psychowet</title>
 </head>
 <body>
 {% block content %}
-    {% for drug in all_drugs %}
-        {% if drug_page.nazwa == drug.nazwa %}
-            <h1>{{ drug.nazwa }}</h1>
-            <p>Opis</p>
-                <li>{{ drug.opis }}</li>
-            <p>Mechanizm działania</p>
-                <li>{{ drug.mechanizm }}</li>
-            <p>Przeciwwskazania</p>
-                <li>{{ drug.przeciwwskazania }}</li>
-        {% endif %}
-    {% endfor %}
+
+{% for drug in all_drugs %}
+{% if drug_page.nazwa == drug.nazwa %}
+  <h1>{{ drug.nazwa }}</h1>
+
+  <p>Opis</p>
+  <li>{{ drug.opis }}</li>
+
+  <p>Mechanizm działania</p>
+  <li>{{ drug.mechanizm }}</li>
+
+  <p>Przeciwwskazania</p>
+  <li>{{ drug.przeciwwskazania }}</li>
+{% endif %}
+{% endfor %}
+
 {% endblock content %}
 </body>
 </html>

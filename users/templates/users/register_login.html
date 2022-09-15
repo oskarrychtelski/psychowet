@@ -1,36 +1,33 @@
 {% extends 'main.html' %}
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pl">
 <head>
-    <meta charset="UTF-8">
-    <title>Psychowet</title>
+  <meta charset="UTF-8">
+  <title>Psychowet</title>
 </head>
 <body>
 {% block content %}
 
 {% if page == 'register' %}
 <h1>Zarejestruj się!</h1>
-
 <form method="POST" action="{% url 'register' %}">
-    {% csrf_token %}
-    {{form.as_p}}
-    <input type="submit" value="Zarejestruj się" />
+  {% csrf_token %}
+  {{form.as_p}}
+  <input type="submit" value="Zarejestruj się" />
 </form>
-
 <p>Masz już konto?<a href="{% url 'login' %}"> Zaloguj się</a></p>
+
 {% else %}
 <form action="{% url 'login' %}" method="POST">
-    {% csrf_token %}
-    <input type="text" name="username" placeholder="Nazwa użytkownika" />
-    <input type="password" name="password" placeholder="Hasło" />
-    <input type="submit" value="Login" />
-
-    <p>Nie masz jeszcze konta?<a href="{% url 'register' %}"> Zarejestruj się</a></p>
+  {% csrf_token %}
+  <input type="text" name="username" placeholder="Nazwa użytkownika" />
+  <input type="password" name="password" placeholder="Hasło" />
+  <input type="submit" value="Login" />
+  <p>Nie masz jeszcze konta?<a href="{% url 'register' %}"> Zarejestruj się</a></p>
 </form>
 {% endif %}
 
 {% endblock content %}
-
 </body>
 </html>

@@ -1,20 +1,19 @@
 {% extends 'main.html' %}
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pl">
 <head>
-    <meta charset="UTF-8">
-    <title>Psychowet</title>
+  <meta charset="UTF-8">
+  <title>Psychowet</title>
 </head>
 <body>
 {% block content %}
 
 <h1>Kontakt</h1>
-
 <form action="" method="POST">
-    {% csrf_token %}
-    {{form.as_p}}
-    <input type="submit">
+  {% csrf_token %}
+  {{form.as_p}}
+  <input type="submit">
 </form>
 
 {% endblock content %}

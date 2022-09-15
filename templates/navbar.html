@@ -1,23 +1,42 @@
-<h1>Psychowet</h1>
-<a href="{% url 'home' %}">
-    <button>Strona główna</button>
-</a>
-<a href="{% url 'drug_index' %}">
-    <button>Baza leków</button>
-</a>
-<a href="{% url 'contact'%}">
-    <button>Kontakt</button>
-</a>
-{% if request.user.is_authenticated %}
-<a href="{% url 'notes' %}">
-    <button>Notatki</button>
-</a>
-<a href="{% url 'logout' %}">
-    <button>Wyloguj się</button>
-</a>
-{% else %}
-<a href="{% url 'login'%}">
-    <button>Zaloguj się/Zarejestruj się</button>
-</a>
-{% endif %}
-<hr>
+{% load static %}
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <title>Psychowet</title>
+
+  <link rel="stylesheet" href="{% static 'styles/general.css' %}">
+  <link rel="stylesheet" href="{% static 'styles/navbar.css' %}">
+</head>
+<body>
+<div class="navbar">
+  <div class="left-section">
+    <img class="logo" src="{% static 'images/logo.png' %}">
+  </div>
+  <div class="right-section">
+    <a href="{% url 'contact'%}">
+      <button class="navbar-button">
+        Kontakt
+        <img src="{% static 'images/mail-icon.png' %}">
+      </button>
+    </a>
+    {% if request.user.is_authenticated %}
+    <a href="{% url 'logout' %}">
+      <button class="navbar-button">
+        Wyloguj się
+        <img src="{% static 'images/logout-icon.png' %}">
+      </button>
+    </a>
+
+    {% else %}
+    <a href="{% url 'login'%}">
+      <button class="navbar-button">
+        Zaloguj się/Zarejestruj się
+        <img src="{% static 'images/login-icon.png' %}">
+      </button>
+    </a>
+    {% endif %}
+  </div>
+</div>
+</body>
+</html>

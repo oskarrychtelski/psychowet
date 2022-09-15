@@ -13,7 +13,7 @@ class NotesForm(forms.ModelForm):
 class ContactForm(forms.Form):
     imie = forms.CharField(max_length=200)
     email = forms.EmailField()
-    tekst = forms.CharField(widget=forms.Textarea)
+    Tekst = forms.CharField(widget=forms.Textarea)
 
 
 # class CustomUserCreationForm(UserCreationForm):
