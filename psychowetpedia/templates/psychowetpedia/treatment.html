@@ -1,5 +1,5 @@
 {% extends 'main.html' %}
-
+{% load static %}
 <!DOCTYPE html>
 <html lang="pl">
 <head>
@@ -9,16 +9,22 @@
 <body>
 {% block content %}
 
-  <P>Informacje na temat leczenia zaburzeń zachowania psów i kotów.</P>
+<h1 class="center-text">Leczenie:</h1>
 
-  <h1>Wybierz gatunek zwierzęcia:</h1>
-
+<div class="main-icon-button-box">
   <a href="psy/">
-    <button>Psy</button>
+    <button class="main-icon-button">
+      <img src="{% static 'images/dog-icon.png' %}">
+      <span>Psy</span>
+    </button>
   </a>
   <a href="koty/">
-    <button>Koty</button>
+    <button class="main-icon-button">
+      <img src="{% static 'images/cat-icon.png' %}">
+      <span>Koty</span>
+    </button>
   </a>
+</div>
 
 {% endblock content %}
 </body>

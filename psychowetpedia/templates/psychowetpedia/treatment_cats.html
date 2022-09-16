@@ -1,4 +1,5 @@
 {% extends 'main.html' %}
+{% load static %}
 
 <!DOCTYPE html>
 <html lang="pl">
@@ -9,18 +10,21 @@
 <body>
 {% block content %}
 
-<h1>{{ disorder_page.nazwa }}</h1>
+<img class="treatment-drug-icon" src="{% static 'images/cat-icon.png' %}">
+<h1 class="center-text">{{ disorder_page.nazwa }}:</h1>
 
-<ul>
+<ul class="specific-treatment-list">
   {% for treatment in treatments_cats %}
   {% if disorder_page == treatment.zaburzenie %}
-  {{ treatment.lek }}
-  <li>{{ treatment.dawka_kot }}</li>
-  <li>{{ treatment.opis }}</li>
+  <div class="specific-treatment">
+    <li class="drug-name">{{ treatment.lek }}</li>
+    <li>Dawka: {{ treatment.dawka_kot }}</li>
+    <li>{{ treatment.opis }}</li>
+  </div>
+  <br>
   {% endif %}
   {% endfor %}
 </ul>
-
 {% endblock content %}
 </body>
 </html>

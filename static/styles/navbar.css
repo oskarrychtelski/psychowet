@@ -17,18 +17,22 @@
   box-shadow: 0 4px 6px -6px #222;
 }
 
-.logo{
-height: 40px;
+.logo-button img {
+  height: 35px;
 }
 
-.left-section{
+.logo-button {
+  border: none;
+}
+
+.left-section {
   width: 200px;
   display: flex;
   align-items: center;
   margin-left: 50px;
 }
 
-.right-section{
+.right-section {
   width: 250px;
   display: flex;
   align-items: center;
@@ -36,14 +40,19 @@ height: 40px;
   margin-right: 50px;
 }
 
-.navbar-button img{
+.navbar-button img {
   height: 35px;
   vertical-align: middle;
 }
 
-.navbar-button{
+.navbar-button {
   border-radius: 8px;
   border-color: grey;
   border-style: solid;
   box-shadow: 0 4px 6px -6px #222;
+  transition: opacity 0.15s;
+}
+
+.navbar-button:hover {
+  opacity: 0.6;
 }

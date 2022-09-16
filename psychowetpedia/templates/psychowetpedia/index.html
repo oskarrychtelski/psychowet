@@ -8,15 +8,17 @@
 </head>
 <body>
 {% block content %}
-<div class="index-button-box">
+
+<h1 class="center-text">Informacje na temat farmakoterapii zaburzeń zachowania psów i kotów:</h1>
+<div class="main-icon-button-box">
   <a href="leczenie/">
-    <button class="index-button">
+    <button class="main-icon-button">
       <img src="{% static 'images/treatment-icon.png' %}">
       <span>Leczenie</span>
     </button>
   </a>
   <a href="leki/">
-    <button class="index-button">
+    <button class="main-icon-button">
       <img src="{% static 'images/drug-icon.png' %}">
       <span>Baza leków</span>
     </button>
@@ -24,7 +26,7 @@
 
   {% if request.user.is_authenticated %}
   <a href="{% url 'notes' %}">
-    <button class="index-button">
+    <button class="main-icon-button">
       <img src="{% static 'images/notes-icon.png' %}">
       <span>Notatki</span>
     </button>

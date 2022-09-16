@@ -1,26 +1,108 @@
-body{
-padding-top: 80px;
-margin: 0;
+body {
+  padding-top: 80px;
+  margin: 0;
 }
 
-.index-button img{
+.main-icon-button {
+  border: none;
+  margin: 30px;
+  transition: opacity 0.15s;
+}
+
+.main-icon-button:hover {
+  opacity: 0.6;
+}
+
+.main-icon-button img {
   height: 140px;
   vertical-align: middle;
 }
 
-.index-button{
-  border-width: 0;
-  margin: 15px;
-}
-
-.index-button-box{
+.main-icon-button-box {
   display: flex;
   flex-direction: row;
   justify-content: center;
 }
 
-.index-button-box span{
+.main-icon-button-box span {
   display: flex;
   flex-direction: row;
   justify-content: center;
+  font-weight: bold;
+  font-size: 24px;
+}
+
+.center-text {
+  text-align: center;
+}
+
+.treatment-drug-icon {
+    display: block;
+    margin: 0 auto;
+    height: 70px;
+}
+
+.treatment-drug-list-box{
+  display: flex;
+  justify-content: center;
+}
+
+.treatment-drug-list {
+  display: flex;
+  width: 500px;
+  flex-wrap: wrap;
+  justify-content: center;
+  list-style-type: none;
+}
+
+.treatment-drug-button {
+  height: 40px;
+  border-radius: 8px;
+  border-color: grey;
+  border-style: solid;
+  box-shadow: 0 4px 6px -6px #222;
+  transition: opacity 0.15s;
+  background-color: white;
+}
+
+.treatment-drug-button:hover {
+  opacity: 0.6;
+}
+
+.specific-treatment-list {
+  display: flex;
+  align-items: top;
+  justify-content: center;
+  list-style-type: none;
+}
+
+.specific-treatment {
+  text-align: center;
+  width: 300px;
+  border: 1px solid grey;
+  border-radius: 9px;
+}
+
+.drug-name {
+  text-align: center;
+  font-weight: bold;
+  background-color: rgb(255,198,4);
+}
+
+.drug-details-list {
+  display: flex;
+  align-items: top;
+  justify-content: center;
+  list-style-type: none;
+}
+
+.drug-details {
+  text-align: left;
+  width: 600px;
+  border: 1px solid grey;
+  border-radius: 9px;
+}
+
+.bold-text {
+  font-weight: bold;
 }

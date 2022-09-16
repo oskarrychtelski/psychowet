@@ -1,4 +1,5 @@
 {% extends 'main.html' %}
+{% load static %}
 <!DOCTYPE html>
 <html lang="pl">
 <head>
@@ -8,14 +9,23 @@
 <body>
 {% block content %}
 
-<h1>Psy</h1>
-<p>Wybierz interesujące Cię zagadnienie:</p>
+<img class="treatment-drug-icon" src="{% static 'images/dog-icon.png' %}">
 
-<ul>
+<p class="center-text">Wybierz interesujące Cię zagadnienie:</p>
+
+<div class="treatment-drug-list-box">
+<ul class="treatment-drug-list">
   {% for disorder in disorders_dogs %}
-  <li><a href="{% url 'treatment_dogs' disorder.uuid %}">{{ disorder }}</a></li>
+  <li>
+    <a href="{% url 'treatment_dogs' disorder.uuid %}">
+      <button class="treatment-drug-button">
+      {{ disorder }}
+      </button>
+    </a>
+  </li>
   {% endfor %}
 </ul>
+</div>
 
 {% endblock content %}
 </body>

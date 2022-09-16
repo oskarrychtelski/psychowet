@@ -9,20 +9,30 @@
 <body>
 {% block content %}
 
-{% for drug in all_drugs %}
-{% if drug_page.nazwa == drug.nazwa %}
-  <h1>{{ drug.nazwa }}</h1>
-
-  <p>Opis</p>
-  <li>{{ drug.opis }}</li>
-
-  <p>Mechanizm działania</p>
-  <li>{{ drug.mechanizm }}</li>
-
-  <p>Przeciwwskazania</p>
-  <li>{{ drug.przeciwwskazania }}</li>
-{% endif %}
-{% endfor %}
+<ul class="drug-details-list">
+  {% for drug in all_drugs %}
+  {% if drug_page.nazwa == drug.nazwa %}
+  <div class="drug-details">
+    <h1 class="drug-name">{{ drug.nazwa }}</h1>
+    <li>
+      <span class="bold-text">Opis: </span>
+      {{ drug.opis }}
+    </li>
+    <br>
+    <li>
+      <span class="bold-text">Mechanizm działania: </span>
+        {{ drug.mechanizm }}
+    </li>
+    <br>
+    <li>
+      <span class="bold-text">Przeciwwskazania: </span>
+        {{ drug.przeciwwskazania }}
+    </li>
+    <br>
+  </div>
+  {% endif %}
+  {% endfor %}
+</ul>
 
 {% endblock content %}
 </body>

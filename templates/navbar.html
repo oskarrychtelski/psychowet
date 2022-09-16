@@ -11,7 +11,11 @@
 <body>
 <div class="navbar">
   <div class="left-section">
-    <img class="logo" src="{% static 'images/logo.png' %}">
+    <a href="{% url 'index'%}">
+      <button class="logo-button">
+        <img src="{% static 'images/logo.png' %}">
+      </button>
+    </a>
   </div>
   <div class="right-section">
     <a href="{% url 'contact'%}">
