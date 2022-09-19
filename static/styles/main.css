@@ -106,3 +106,63 @@ body {
 .bold-text {
   font-weight: bold;
 }
+
+.create-note-box{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.create-note-content{
+  border: 1px solid grey;
+  border-radius: 9px;
+  padding: 15px;
+}
+
+.read-notes-big-box{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.read-notes-small-box{
+  display:flex;
+  flex-direction: column;
+}
+
+
+.individual-note{
+  margin: 25px 0;
+  display:flex;
+  flex-direction: row;
+  align-items: top;
+}
+
+.note-table {
+  width: 800px;
+  border: 1px solid grey;
+  border-radius: 9px;
+  table-layout: fixed;
+}
+
+.note-table th{
+  background-color: rgb(255,198,4);
+  text-align: center;
+  border: 1px solid grey;
+}
+
+.note-table td{
+  text-align: left;
+  padding: 10px;
+  border: 1px solid grey;
+}
+
+.desc-column {
+  width: 300px;
+  word-wrap: break-word;
+}
+
+.button-column{
+  display: flex;
+  flex-direction: column;
+}

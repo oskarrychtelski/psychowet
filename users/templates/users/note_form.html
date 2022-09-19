@@ -1,4 +1,5 @@
 {% extends 'main.html' %}
+{% load static %}
 
 <!DOCTYPE html>
 <html lang="pl">
@@ -9,13 +10,16 @@
 <body>
 {% block content %}
 
-<h1>Zapisz notatkę z leczeniem</h1>
+<img class="treatment-drug-icon" src="{% static 'images/notes-icon.png' %}">
+<h1 class="center-text">Zapisz notatkę z leczeniem:</h1>
 
-<form action="" method="POST">
-  {% csrf_token %}
-  {{form.as_p}}
-  <input type="submit">
-</form>
+<div class="create-note-box">
+  <form action="" method="POST" class="create-note-content">
+    {% csrf_token %}
+    {{form.as_p}}
+    <input type="submit" class="treatment-drug-button">
+  </form>
+</div>
 
 {% endblock content %}
 </body>

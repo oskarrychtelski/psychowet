@@ -1,4 +1,5 @@
 {% extends 'main.html' %}
+{% load static %}
 
 <!DOCTYPE html>
 <html lang="pl">
@@ -10,35 +11,54 @@
 {% block content %}
 
 {% if author_notes == None %}
-  <h1>Nie masz na razie żadnych notatek.</h1>
-  <a href="{% url 'createNotes'%}">
-    <button>Stwórz notatkę</button>
-  </a>
-
+<div class="read-notes-big-box">
+  <div class="read-notes-small-box">
+    <img class="treatment-drug-icon" src="{% static 'images/notes-icon.png' %}">
+    <h1>Nie masz na razie żadnych notatek.</h1>
+    <br>
+    <a href="{% url 'createNotes'%}">
+      <button class="treatment-drug-button">Stwórz notatkę</button>
+    </a>
+  </div>
+</div>
 {% else %}
-<a href="{% url 'createNotes'%}">
-  <button>Stwórz notatkę</button>
-</a>
-{% for note in author_notes %}
-<table>
-  <tr>
-    <th>Imię Zwierzęcia</th>
-    <th>Zaburzenie</th>
-    <th>Lek</th>
-    <th>Opis</th>
-    <th></th>
-    <th></th>
-    </tr>
-  <tr>
-    <td>{{note.imie_zwierzecia}}</td>
-    <td>{{note.zaburzenie}}</td>
-    <td>{{note.lek}}</td>
-    <td>{{note.opis}}</td>
-    <td><a href="{% url 'updateNotes' note.uuid %}">Edytuj</a></td>
-    <td><a href="{% url 'deleteNotes' note.uuid %}">Usuń</a></td>
-  </tr>
-</table>
-{% endfor %}
+<div class="read-notes-big-box">
+  <div class="read-notes-small-box">
+  <a href="{% url 'createNotes'%}">
+    <button class="treatment-drug-button">Stwórz notatkę</button>
+  </a>
+  {% for note in author_notes %}
+    <div class="individual-note">
+      <table class="note-table">
+        <tr>
+          <th>Imię Zwierzęcia</th>
+          <th>Zaburzenie</th>
+          <th>Lek</th>
+          <th class="desc-column">Opis</th>
+        </tr>
+        <tr>
+          <td>{{note.imie_zwierzecia}}</td>
+          <td>{{note.zaburzenie}}</td>
+          <td>{{note.lek}}</td>
+          <td class="desc-column">{{note.opis}}</td>
+        </tr>
+      </table>
+        <div class="button-column">
+          <a href="{% url 'updateNotes' note.uuid %}">
+              <button class="treatment-drug-button">
+              Edytuj
+              </button>
+            </a>
+            <a href="{% url 'deleteNotes' note.uuid %}">
+              <button class="treatment-drug-button">
+              Usuń
+              </button>
+            </a>
+        </div>
+    </div>
+  {% endfor %}
+  </div>
+</div>
 {% endif %}
 
 {% endblock content %}
